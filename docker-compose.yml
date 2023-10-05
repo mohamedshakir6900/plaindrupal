@@ -1,0 +1,19 @@
+version: '3'
+services:
+  drupal:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./drupal-modules:/var/www/html/modules/custom
+    depends_on:
+      - database
+    environment:
+      # Drupal database configuration
+      # ...
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: your-root-password
+      MYSQL_DATABASE: your-drupal-database
